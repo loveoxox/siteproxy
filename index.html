@@ -1,89 +1,28 @@
-<!DOCTYPE html>
-<!-- This file is served dynamically from index.ts backend script-->
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>%SITENAME%</title>
-    <style>
-      body {
-        display: flex;
-        justify-content: center;
-        font-family: sans-serif;
-        color: #a89e84;
-        background-color: #fdf6e3;
-        transition: background-color 0.3s, color 0.3s;
-      }
-      .container {
-        width: 80%;
-      }
-      h1 {
-        display: flex;
-        color: #a89e84;
-      }
-      .search-box {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 40px;
-        font-size: 18px;
-        color: #a89e84;
-        border: 2px solid #a89e84;
-        background-color: #f5f5f5;
-        border-radius: 5px;
-        outline: none;
-        box-sizing: border-box;
-      }
-      a {
-        color: #a89e84;
-        text-decoration: none;
-      }
-      .warn {
-        color: red;
-      }
-      footer {
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>%SITENAME%</h1>
-      <form id="form" method="get" action="./%PREFIX%api">
-        <input type="hidden" name="action" value="go" />
-        <input autofocus type="search" class="search-box" name="url" placeholder="Input the url and press Enter" />
-      </form>
-      <noscript><div class="warn">JavaScript is disabled. Some websites may not load normally.</div></noscript>
-      <footer>
-        v%VERSION%
-        <a href="https://github.com/sagan/siteproxy" rel="noopener noreferrer">Github</a>&nbsp;|
-        <a href="./%PREFIX%api?action=clear" title="Clear cache">Clear cache</a>
-      </footer>
-    </div>
-    <script>
-      const formEl = document.querySelector("#form");
-      const inputEl = formEl.querySelector(`*[name="url"]`);
-      formEl.addEventListener("submit", (e) => {
-        e.preventDefault();
-        let inputText = inputEl.value.trim();
-        if (!inputText) {
-          return;
-        }
-        if (!inputText.startsWith("http://") && !inputText.startsWith("https://")) {
-          inputText = "https://" + inputText;
-        }
-        let url;
-        try {
-          url = new URL(inputText);
-        } catch (e) {
-          alert(`invalid url: ${e}`);
-          return;
-        }
-        if (url.protocol !== "http:" && url.protocol !== "https:") {
-          alert(`invalid url protocol: ${url.protocol}`);
-          return;
-        }
-        location.href = `${location.pathname}${url.protocol}//${url.href.slice(url.protocol.length + 2)}`;
-      });
-    </script>
-  </body>
-</html>
+
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<title>Welcome to nginx!</title>
+	<style>
+		body {
+			width: 35em;
+			margin: 0 auto;
+			font-family: Tahoma, Verdana, Arial, sans-serif;
+		}
+	</style>
+	</head>
+	<body>
+	<h1>Welcome to nginx!</h1>
+	<p>If you see this page, the nginx web server is successfully installed and
+	working. Further configuration is required.</p>
+
+	<p>For online documentation and support please refer to
+	<a href="http://nginx.org/">nginx.org</a>.<br/>
+	Commercial support is available at
+	<a href="http://nginx.com/">nginx.com</a>.</p>
+
+	<p><em>Thank you for using nginx.</em></p>
+	<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"837331dfe81c45059a6f9fb142092ce8","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+	</html>
+	
